@@ -20,6 +20,10 @@ O projeto foi construído utilizando uma arquitetura baseada em eventos (Event-D
 - **Detecção de Risco (Os 6 Ps):** O Agente de IA monitora ativamente palavras-chave (ex: "dedos frios", "dor insuportável") e executa um sub-fluxo de emergência.
 - **Roteamento Inteligente:** Separa a comunicação B2C (Bot -> Paciente) da B2B (Bot -> Enfermagem).
 - **Tratamento de Alucinações:** LLM estritamente contido por "Role-Boundary Jailbreaks" para não receitar medicamentos ou gerar falsas promessas de retorno em background.
+## 🚨 Sistema de Alerta Crítico em Tempo Real (A Joia da Coroa)
+O grande diferencial do OrtoGuide não é apenas conversar, mas **monitorar e intervir**. A IA atua como uma sentinela ativa: se durante o acolhimento o paciente relatar qualquer um dos "6 Ps" (sinais de Síndrome Compartimental Aguda, como dor desproporcional, palidez ou formigamento), o sistema identifica o risco instantaneamente. 
+
+Nesse momento, o OrtoGuide aciona uma rota de emergência na arquitetura: ele informa o paciente que a equipe foi acionada e, via Webhook, dispara um **alerta imediato com os dados da ficha** diretamente para um grupo fechado no Telegram exclusivo para a equipe de enfermagem. Isso garante que casos com risco de necrose ou complicações graves saiam da fila virtual e recebam intervenção humana imediata.
 
 ## 🛠️ Como replicar
 *(Aqui você pode adicionar instruções básicas de como importar o arquivo .json do seu n8n, se quiser disponibilizá-lo)*
