@@ -1,55 +1,41 @@
-# OrtoGuide — conceito de triagem ortopédica assistida por IA 🏥
+# OrtoGuide - conceito acadêmico de acolhimento ortopédico
 
-Documentação conceitual de um assistente virtual para acolhimento e educação de pacientes ortopédicos, com foco inicial no SUS em Curitiba. A proposta combina automação, linguagem natural e encaminhamento de alertas para apoiar — nunca substituir — a avaliação humana.
+Documentação conceitual de um assistente virtual para educação e acolhimento de pacientes em uma fila de atendimento ortopédico. A proposta surgiu como exercício acadêmico sobre automação, linguagem natural e encaminhamento de alertas para uma equipe humana.
 
-> **Estado do projeto:** conceito de arquitetura e fluxo. Este repositório não contém uma aplicação clínica pronta, validada ou autorizada para uso com pacientes.
+## Estado do projeto
 
-## Problema
+- é um conceito de estudo, não um sistema clínico em funcionamento;
+- o repositório não contém fluxo exportado do n8n nem integração implantada;
+- não foi validado por profissionais de saúde e não deve orientar atendimento real;
+- a idealização e a documentação tiveram apoio de ferramentas de IA.
 
-Durante a espera por atendimento, pacientes podem ter dúvidas ou relatar piora dos sintomas. O OrtoGuide propõe um canal de orientação geral que identifica relatos potencialmente críticos e encaminha um alerta para a equipe responsável.
+## Fluxo imaginado
 
-## Arquitetura proposta
+1. O paciente inicia uma conversa em um bot.
+2. O fluxo consulta dados fictícios de uma planilha.
+3. Um modelo de linguagem responde dentro de limites definidos no prompt.
+4. Mensagens com sinais de alerta são encaminhadas para avaliação humana.
 
-```mermaid
-flowchart LR
-    Patient[Paciente] --> Bot[Bot no Telegram]
-    Bot --> N8N[Fluxo no n8n]
-    N8N --> LLM[LLM com guardrails]
-    N8N --> Records[(Fonte de dados demonstrativa)]
-    N8N -->|sinal de alerta| Team[Canal da equipe]
-```
+## Tecnologias consideradas
 
-- **Interface:** Telegram Bot API.
-- **Orquestração:** n8n e webhooks.
-- **Processamento de linguagem:** Llama 3 via Groq API, com limites de atuação definidos no prompt.
-- **Dados demonstrativos:** Google Sheets API.
-- **Alertas:** canal separado para a equipe responsável.
+- n8n para orquestração;
+- Telegram Bot para a interface de conversa;
+- API de modelo de linguagem para gerar respostas;
+- Google Sheets como fonte de dados fictícios.
 
-## Fluxos previstos
+## O que o projeto me ajudou a estudar
 
-- identificação do paciente em uma base demonstrativa;
-- orientações gerais sobre etapas do atendimento;
-- observação de termos associados a sinais de alerta;
-- encaminhamento do relato à equipe humana;
-- separação entre o canal do paciente e o canal interno.
+- desenho de fluxos no n8n;
+- uso responsável de IA em um contexto sensível;
+- limites entre orientação automatizada e decisão humana;
+- necessidade de privacidade, validação profissional e tratamento de falhas.
 
-## Limites de segurança
+## Próximos passos de aprendizado
 
-- Não fornece diagnóstico, prognóstico ou prescrição.
-- Não promete prioridade ou tempo de atendimento.
-- Um alerta automatizado não confirma uma condição clínica.
-- Todo caso precisa ser avaliado por profissional habilitado.
-- Dados pessoais e de saúde exigem base legal, minimização, controle de acesso, retenção definida e demais medidas previstas na LGPD.
-- Qualquer uso real dependeria de validação clínica, jurídica, de segurança e institucional.
+- criar um fluxo mínimo somente com dados fictícios;
+- versionar o arquivo exportado do n8n;
+- documentar entradas, saídas e casos de erro;
+- remover qualquer dado que possa identificar uma pessoa;
+- testar o encaminhamento para atendimento humano sem simular diagnóstico.
 
-## Próximas etapas para um protótipo
-
-1. Criar um fluxo n8n exportável usando apenas dados fictícios.
-2. Versionar exemplos de mensagens sem informações pessoais.
-3. Documentar o modelo de ameaças e os controles de acesso.
-4. Adicionar testes para respostas proibidas e falsos positivos.
-5. Medir qualidade, latência e taxa de encaminhamento em ambiente controlado.
-
-## Aviso
-
-Este material é educacional e não é um dispositivo médico. Em uma emergência, procure imediatamente o serviço de saúde apropriado.
+Este repositório não substitui avaliação, triagem ou orientação de profissionais de saúde.
